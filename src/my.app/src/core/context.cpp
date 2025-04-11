@@ -59,6 +59,9 @@ MyApp::Core::Context::Context (const std::string &p_projectPath)
     window = std::make_unique<MyWindowing::Window> (*device, windowSettings);
     window->MakeCurrentContext ();
 
+    uiManager = std::make_unique<MyUI::Core::UIManager> (window->GetGlfwWindow (), MyUI::Styling::EStyle::IM_LIGHT_STYLE);
+    uiManager->EnableDocking (true);
+
     device->SetVsync (true);
 }
 

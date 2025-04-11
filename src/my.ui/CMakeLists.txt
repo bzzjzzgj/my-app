@@ -1,7 +1,8 @@
 project(my.ui)
 
-# imgui
+
 add_library(${PROJECT_NAME} STATIC
+        # imgui
         src/imgui/imgui.cpp
         src/imgui/imgui_demo.cpp
         src/imgui/imgui_draw.cpp
@@ -9,7 +10,15 @@ add_library(${PROJECT_NAME} STATIC
         src/imgui/imgui_widgets.cpp
         src/imgui/imgui_impl_glfw.cpp
         src/imgui/imgui_impl_opengl3.cpp
+
+        # self
+        src/core/ui_manager.cpp
+        src/internal/widget_container.cpp
+        src/widgets/awidget.cpp
+        src/modules/canvas.cpp
+        
 )
+
 
 target_include_directories(${PROJECT_NAME} PUBLIC
         ${PROJECT_SOURCE_DIR}/include
@@ -19,4 +28,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
         my.windowing
+        my.maths
+        my.tools
 )
